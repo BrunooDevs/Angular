@@ -1,0 +1,15 @@
+<!--  (click)="setHabilitar()" el metodo setHabilitar() esta en directiva.component.ts, cuando se de clic preguntara si habilitar es true, si es true lo pondra en falso y si es falso lo pondra en true  -->
+
+<button type="button" (click)="setHabilitar()" class="btn btn-primary my-3">{{ habilitar==true ? 'Ocultar': 'Mostrar' }}</button>
+
+<div class="card">
+    <div class="card-header">
+        Listado de cursos
+    </div>
+
+    
+    <!-- directiva:  *ngFor="let curso of listaCurso">{{curso}} nos recorrera el arreglo listaCurso que se encuentra en el archivo directiva.component.ts-->
+    <ul class="list-group" *ngIf="habilitar == true">
+        <li class="list-group-item" *ngFor="let curso of listaCurso">{{curso}}</li>
+    </ul>
+</div>
