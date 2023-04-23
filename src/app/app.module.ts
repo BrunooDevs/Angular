@@ -34,6 +34,12 @@ import { ProductoComponent } from './producto/producto.component';
 import { SeccionComponent } from './seccion/seccion.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { SeccionService } from './seccion/seccion.service';
+import { PrecioService } from './precio/precio.service';
+import { ClientesService } from './clientes/clientes.service';
+import { UsuarioService } from './usuario/usuario.service';
+import { ProductoService } from './producto/producto.service';
+import { formSeccion } from './seccion/formSeccion.component';
+
 
  //se utiliza para cambiar el locale de ingles a español, se ara de forma global en toda la aplicacion 
  registerLocaleData(localeES,"es");
@@ -60,7 +66,19 @@ const routes: Routes = [
 
   {path:  'secciones', component: SeccionComponent},
 
-  {path:  'precios', component: PrecioComponent} 
+  {path:  'precios', component: PrecioComponent} ,
+
+  {path:  'clientes/clientes', component: ClientesssComponent},
+
+  {path:  'informacion/usuarios', component: UsuarioComponent} ,
+
+  {path:  'productos', component: ProductoComponent},
+
+  /*formularios de secciones*/
+  {path: 'seccion/form', component: formSeccion} ,
+  {path:  'secciones/form/:id', component: formSeccion}, //uri para ver un cliente solo por su id
+
+
 
 ];
 
@@ -80,7 +98,12 @@ const routes: Routes = [
     PrecioComponent,
     ProductoComponent,
     SeccionComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ProductoComponent,
+
+   /*formularioa de componentes */
+    formSeccion
+
 
     
 
@@ -93,7 +116,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [ClienteService,SeccionService,PrecioComponent],
+  providers: [ClienteService,SeccionService,PrecioService,ClientesService,UsuarioService,ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

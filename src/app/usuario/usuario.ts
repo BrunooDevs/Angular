@@ -1,4 +1,4 @@
-import { clientesss } from "../clientes/clientes";
+import { clientesss } from "../clientes/clientesss";
 
 export class usuario {
 

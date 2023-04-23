@@ -6,7 +6,7 @@
       <div class="my-2 text-left">
         <!-- con  [routerLink]: realizamos nuestras rutas o enlaces , rutas internas de nuestros proyectos -->
        
-        <button class="btn btn-rounded btn-primary" [routerLink]="['/secciones']" routerLinkActive="router-link-active" >Crear seccion</button>
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/seccion/form']" routerLinkActive="router-link-active" >Crear seccion</button>
       
     </div>
    
@@ -37,7 +37,7 @@ cliente.apellidos | uppercase convertimos los apellido en mayusculas con el |-->
                     <td>{{seccion.edo}}</td>
                     <td>{{seccion.nombre}}</td>
                    
-                    <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/clientes/form', seccion.nseccion]" routerLinkActive="router-link-active" >Editar</button></td>
+                    <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/secciones/form', seccion.nseccion]" routerLinkActive="router-link-active" >Editar</button></td>
 
                     <!--cada vez que se haga clic en el boton eliminar va a invocar al metodo delete(cliente) y  va a pasar el objeto completo cliente, el objeto de la fila actual-->
                     <td><button type="button" name="eliminar" (click)='delete(seccion)' class="btn btn-danger" >Eliminar</button></td>

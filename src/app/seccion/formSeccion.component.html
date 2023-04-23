@@ -1,0 +1,103 @@
+<!--mostramos los errores de la entidad cliente de los campos con validacion
+desde el fronted , mostramos el arreglo de string de errores de la clase component formcomponente.ts-->
+
+<div *ngIf="errores != null">
+    <ul class="alert alert-danger">
+        <li *ngFor="let err of errores">
+            {{err}}
+        </li>
+    </ul>
+</div>
+
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+        <!-- [(ngModel)]="": es una directiva y sera igual a un valor que tenemos
+        en la clase component, esta directiva puebla los datos del formulario al objeto al atributo cliente y asus atributos, por lo tanto este formulario estara mapeado a un objeto y es un atributo de la clase form.componente.ts 
+            
+        (ngSubmit) = "" esta directiva se llama, el parametro es el nombre del componente que se va a invocar cuando se envie el formulario, cuando se realize el submit , en este caso al metodo  create() de form.component.ts
+    -->
+
+        <!-- required minlength="4" indica que debe de contener 4 caracteres en input
+    
+    mostramos los mensajes de error
+    #nombre="ngModel": contiene los mensajes de error del imput
+
+    nombre.dirty:mostramos los mensajes de error si estamos escribiendo 
+
+    nombre.touched: muestra los mensajes de error cuando nos salimos del foco del imput
+
+    *ngIf="nombre.errors?.['required']: mostramos el texto cuando falla el required
+
+    #clienteForm="*ngForm": vemos si nuestro formulario es valido no contiene errores
+
+    required minlength="4": agregarlo al imput nombre si se quiere validacion del lado de angular (frontend)
+    
+    required : agregarlo al imput de apellido para validarlo desde html o del lado de franted  lado de angular (frontend)
+
+    required email:  agregarlo al input de email para agregar la  validacion del lado de angular (frontend)--->
+
+
+        <form #clienteForm="ngForm">
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="seccion.
+                         nombre" name="nombre"  #nombre="ngModel">
+
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div *ngIf="nombre.errors?.['required']">
+                            el nombre es requerido
+                        </div>
+                        <div *ngIf="nombre.errors?.['minlength']">
+                            Nombre debe tener almenos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group row">
+                <label for="estado" class="col-form-label col-sm-2">estado</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="seccion.edo" name="estado" #estado="ngModel">
+                        
+
+                    <div class="alert alert-danger" *ngIf="estado.invalid  &&(estado.dirty || estado.touched)">
+                        <div *ngIf="estado.errors?.['required']">
+                        el estado debe ser 1 o 0
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!--elseBlock": es una etiqueta para un template
+
+[disabled]="!clienteForm.form.valid": si es valido el formulario(que no tengan errores los imputs) se abilita el boton -->
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!seccion.nseccion else elseBlock"
+                        [disabled]="!clienteForm.form.valid">Crear</button>
+
+                    <ng-template #elseBlock>
+
+                        <button class="btn btn-primary" role="button" (click)='update()'
+                            [disabled]="!clienteForm.form.valid">Editar</button>
+
+                    </ng-template>
+
+                </div>
+            </div>
+
+        </form>
+
+
+
+
+    </div>
+</div>
